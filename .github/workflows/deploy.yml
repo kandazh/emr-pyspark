@@ -36,13 +36,13 @@ jobs:
 
     - name: Submit Spark job to EMR
       run: |
-        aws emr add-steps \
-            --cluster-id YOUR_CLUSTER_ID \
-            --steps Type=Spark,Name="PySpark job",ActionOnFailure=CONTINUE,Args=[
-                --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/src/utils.py,
-                s3://kan-emr-works/emr-repo/emr-pyspark/src/main.py,
-                --deploy-mode,cluster
-            ]
+            aws emr add-steps \
+                --cluster-id j-WT6Y2WXJS0CN \
+                --steps Type=Spark,Name="PySpark job",ActionOnFailure=CONTINUE,Args=[
+                    --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/src/utils.py,
+                    s3://kan-emr-works/emr-repo/emr-pyspark/src/main.py,
+                    --deploy-mode,cluster
+                ]
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
