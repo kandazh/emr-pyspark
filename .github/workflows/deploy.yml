@@ -32,15 +32,15 @@ jobs:
 
     - name: Upload code to S3
       run: |
-        aws s3 sync src/ s3://kan-emr-works/emr-repo/emr-pyspark/ --delete
+        aws s3 sync src/ s3://kan-emr-works/emr-repo/emr-pyspark/src/ --delete
 
     - name: Submit Spark job to EMR
       run: |
             aws emr add-steps \
-                --cluster-id j-WT6Y2WXJS0CN \
+                --cluster-id j-3CH99SI4D2E4T \
                 --steps Type=Spark,Name="PySpark job",ActionOnFailure=CONTINUE,Args=[
-                    --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/utils.py,
-                    s3://kan-emr-works/emr-repo/emr-pyspark/main.py,
+                    --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/src/utils.py,
+                    s3://kan-emr-works/emr-repo/emr-pyspark/src/main.py,
                     --deploy-mode,cluster
                 ]
 
