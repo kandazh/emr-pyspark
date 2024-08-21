@@ -39,8 +39,8 @@ jobs:
             aws emr add-steps \
                 --cluster-id j-WT6Y2WXJS0CN \
                 --steps Type=Spark,Name="PySpark job",ActionOnFailure=CONTINUE,Args=[
-                    --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/src/utils.py,
-                    s3://kan-emr-works/emr-repo/emr-pyspark/src/main.py,
+                    --py-files,s3://kan-emr-works/emr-repo/emr-pyspark/utils.py,
+                    s3://kan-emr-works/emr-repo/emr-pyspark/main.py,
                     --deploy-mode,cluster
                 ]
 
